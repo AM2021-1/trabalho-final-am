@@ -1,4 +1,7 @@
 file_name,labels
+block_0,xxpageIndex
+block_1,xxheader
+block_2,xxdate
 block_4,xxtitle2
 block_6,xxtitle3
 block_7,xxtext
@@ -13,3 +16,7 @@ block_35,xxtext
 block_36,xxtext
 block_37,xxtext
 block_39,xxdescription
+block_40,xxpageIndex
+block_41,xxheader
+block_42,xxdate
+block_44,xxtitle3
