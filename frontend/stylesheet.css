@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	justify-content: center;
+	align-items: center;
+}
+
+.title-section {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 2em;
+}
+
+h1 {
+	font-size: 64px;
+}
+
+h2 {
+	font-size: 32px;
+}
+
+.upload-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.upload-section * {
+	margin-bottom: 1em;
+}
+
+.upload-section button {
+	width: 8em;
+}
+
+.intro {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	margin: auto;
+	height: 100%;
+	user-select: none;
+}
+
+.bg {
+	position: absolute;
+	width: calc(100% + 20px);
+	height: calc(100% + 20px);
+	top: -10px;
+	left: -10px;
+	background-image: url(assets/businessbg.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: -2;
+	filter: blur(10px);
+}
+
+.image {
+	position: absolute;
+	display: flex;
+	flex-direction:row;
+	justify-content: center;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	z-index: -1;
+}
+
+.intro h1 {
+	font-size: 12vw;
+}
+
+.intro p {
+	font-size: 4.5vw;
+}
+
+.intro button {
+	margin-top: 1em;
+	font-size: 4.5vw;
+	background-color: black;
+	color: white;
+	padding-left: 1em;
+	padding-right: 1em;
+	border-radius: 0.5em;
+	outline: none;
+	transition: 0.25s;
+	cursor: pointer;
+}
+
+.intro button:hover {
+	transform: scale(1.3);
+}
+
+.line {
+	width: 100%;
+	height: 0;
+	border: none;
+	border-bottom: 1px black solid;
+	margin-bottom: 0.25em;
+}
+
+.backdrop {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	background-color: black;
+	opacity: 0;
+	pointer-events: none;
+	z-index: 2;
+}
+
+.modal {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: white;
+	width: 80vw;
+	height: 80vh;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border: none;
+	border-radius: 0.25vw;
+	opacity: 0;
+	pointer-events: none;
+	z-index: 3;
+}
+
+.modal-title {
+	max-height: 20%;
+	overflow: hidden;
+	font-family: 'Roboto';
+	text-align: center;
+}
+
+.modal-footer {
+	min-height: 8%;
+	max-height: 8%;
+	text-align: right;
+}
+
+.modal-title h1 {
+	font-size: 4vw;
+	padding: 0;
+	margin: 0;
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
+	text-height: 2vw;
+}
+
+.modal-body {
+	display: block;
+	text-align: center;
+	max-height: 72%;
+	min-height: 72%;
+	overflow-y: scroll;
+}
+
+.modal-body label, .modal-body input {
+	display: block;
+	font-size: 3vw;
+	text-align: center;
+	font-family: 'Roboto';
+	margin-bottom: 0.5em;
+	line-height: 3.2vw;
+	margin: auto;
+}
+
+.modal-body input[type=checkbox] {
+	transform: scale(4) translateY(50%);
+}
+
+.modal-footer button {
+	background-color: black;
+	border: none;
+	color: white;
+	font-size: 2vw;
+	font-family: 'Roboto';
+	height: 80%;
+	cursor: pointer;
+	border-radius: 5px;
+	text-align: center;
+	transition: 0.25s;
+	margin-right: 0.5vw;
+	margin-top: 0.5vh;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.modal-footer button:hover {
+	transform: scale(1.05);
+}
+
+.modal-body button {
+	background-color: black;
+	border: none;
+	color: white;
+	font-size: 1vw;
+	font-family: 'Roboto';
+	height: 10vh;
+	cursor: pointer;
+	border-radius: 5px;
+	text-align: center;
+	transition: 0.25s;
+	margin-right: 0.5vw;
+	margin-top: 0.5vh;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.modal-body button:hover {
+	transform: scale(1.05);
+}
+
+.modal-footer .line {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.timer, .stroke-properties {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	font-size: 4.25vw;
+	font-family: 'Roboto';
+}
+
+.stroke-properties {
+	bottom: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.skip {
+	display: none;
+	position: absolute;
+	font-size: 8vw;
+	user-select: none;
+	margin: 0;
+	padding: 0;
+	line-height: 4.25vw;
+	bottom: 1vw;
+	right: 1vw;
+	cursor: pointer;
+	transition: 0.25s;
+}
+
+.skip:hover {
+	transform: scale(1.2);
+}
