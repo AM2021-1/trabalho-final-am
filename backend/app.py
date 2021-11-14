@@ -17,15 +17,13 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/', methods=['POST'])
 @cross_origin(origin='*',headers=['Content-Type'])
 def hello():
-    response = flask.jsonify({'some': 'data'})
     if 'file' in request.files:
         file = request.files['file']
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
-    response.headers.add('Content-Type', 'application/json')
+        resposta = segmentation.faz_tudo(file.filename)
+        os.remove('./files/'+ file.filename)
 
-    # resposta = segmentation.faz_tudo()
 
-    # os.remove('./files/DODF.pdf')
 
     return 'Success', 200
 
