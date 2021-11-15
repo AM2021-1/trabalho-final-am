@@ -14,13 +14,15 @@ app = Flask(__name__)
 cors = CORS(app, resources={r"/": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 if not os.path.exists(UPLOAD_FOLDER):
     os.mkdir(UPLOAD_FOLDER)
     os.mkdir(f'{UPLOAD_FOLDER}/images')
 elif not os.path.exists(f'{UPLOAD_FOLDER}/images'):
     os.mkdir(f'{UPLOAD_FOLDER}/images')
 
-model = torch.hub.load('/home/tiveron/faculdade/AM/a/trabalho-final-am/backend/yolov5', 'custom', path='./best.pt', source='local')
+# model = torch.hub.load('/home/tiveron/faculdade/AM/a/trabalho-final-am/backend/yolov5', 'custom', path='./best.pt', source='local')
+model = ""
 
 print('UUUUUUUUAAAAAAAAAAAAAAAAHHHHHHHHHHH')
 
@@ -33,9 +35,8 @@ def hello():
         resposta = segmentation.faz_tudo(file.filename, model)
         os.remove('./files/'+ file.filename)
 
-
-
     return jsonify(resposta)
+
 
 if __name__ == '__main__':
     app.run()
