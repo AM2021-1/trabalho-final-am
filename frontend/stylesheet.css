@@ -38,18 +38,6 @@ h2 {
 	width: 8em;
 }
 
-.intro {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	font-family: 'Roboto', sans-serif;
-	text-align: center;
-	margin: auto;
-	height: 100%;
-	user-select: none;
-}
-
 .bg {
 	position: absolute;
 	width: calc(100% + 20px);
@@ -62,45 +50,6 @@ h2 {
 	background-repeat: no-repeat;
 	z-index: -2;
 	filter: blur(10px);
-}
-
-.image {
-	position: absolute;
-	display: flex;
-	flex-direction:row;
-	justify-content: center;
-	text-align: center;
-	width: 100%;
-	height: 100%;
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat;
-	z-index: -1;
-}
-
-.intro h1 {
-	font-size: 12vw;
-}
-
-.intro p {
-	font-size: 4.5vw;
-}
-
-.intro button {
-	margin-top: 1em;
-	font-size: 4.5vw;
-	background-color: black;
-	color: white;
-	padding-left: 1em;
-	padding-right: 1em;
-	border-radius: 0.5em;
-	outline: none;
-	transition: 0.25s;
-	cursor: pointer;
-}
-
-.intro button:hover {
-	transform: scale(1.3);
 }
 
 .line {
@@ -139,10 +88,12 @@ h2 {
 	opacity: 0;
 	pointer-events: none;
 	z-index: 3;
+	padding: 0em 1.5em;
+	padding-bottom: 1.5em;
 }
 
 .modal-title {
-	max-height: 20%;
+	height: 12%;
 	overflow: hidden;
 	font-family: 'Roboto';
 	text-align: center;
@@ -165,10 +116,19 @@ h2 {
 
 .modal-body {
 	display: block;
-	text-align: center;
-	max-height: 72%;
-	min-height: 72%;
+	align-items: center;
+	justify-content: center;
+	height: 88%;
+	width: 100%;
 	overflow-y: scroll;
+	text-align: center;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.modal-body h2 {
+	color: red;
+	font-family: 'Roboto', sans-serif;
 }
 
 .modal-body label, .modal-body input {
@@ -185,34 +145,13 @@ h2 {
 	transform: scale(4) translateY(50%);
 }
 
-.modal-footer button {
-	background-color: black;
-	border: none;
-	color: white;
-	font-size: 2vw;
-	font-family: 'Roboto';
-	height: 80%;
-	cursor: pointer;
-	border-radius: 5px;
-	text-align: center;
-	transition: 0.25s;
-	margin-right: 0.5vw;
-	margin-top: 0.5vh;
-	padding-left: 1em;
-	padding-right: 1em;
-}
-
-.modal-footer button:hover {
-	transform: scale(1.05);
-}
-
 .modal-body button {
 	background-color: black;
 	border: none;
 	color: white;
-	font-size: 1vw;
-	font-family: 'Roboto';
-	height: 10vh;
+	font-size: 2em;
+	font-family: 'Roboto', sans-serif;
+	height: 3em;
 	cursor: pointer;
 	border-radius: 5px;
 	text-align: center;
@@ -221,10 +160,23 @@ h2 {
 	margin-top: 0.5vh;
 	padding-left: 1em;
 	padding-right: 1em;
+	width: 100%;
+}
+
+.modal-body summary {
+	text-align: initial !important;
+}
+
+.results {
+	font-family: 'Roboto', sans-serif;
 }
 
 .modal-body button:hover {
-	transform: scale(1.05);
+	transform: scale(1.01);
+}
+
+.modal-body::-webkit-scrollbar {
+	display: none;
 }
 
 .modal-footer .line {
@@ -232,34 +184,47 @@ h2 {
 	padding-bottom: 0;
 }
 
-.timer, .stroke-properties {
-	position: absolute;
-	width: 100%;
-	text-align: center;
-	font-size: 4.25vw;
-	font-family: 'Roboto';
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid red;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
 }
 
-.stroke-properties {
-	bottom: 0;
-	margin-bottom: 0;
-	padding-bottom: 0;
+.loading-div {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
 }
 
-.skip {
+.result-content {
 	display: none;
-	position: absolute;
-	font-size: 8vw;
-	user-select: none;
-	margin: 0;
-	padding: 0;
-	line-height: 4.25vw;
-	bottom: 1vw;
-	right: 1vw;
-	cursor: pointer;
-	transition: 0.25s;
-}
-
-.skip:hover {
-	transform: scale(1.2);
 }
