@@ -26,7 +26,7 @@ model = torch.hub.load('../yolovS', 'custom', path='./best.pt', source='local')
 
 print('UUUUUUUUAAAAAAAAAAAAAAAAHHHHHHHHHHH')
 
-@app.route('/', methods=['POST', 'OPTIONS'])
+@app.route('/', methods=['POST'])
 @cross_origin(origin='*',headers=['Content-Type'])
 def hello():
     if request.method == 'OPTIONS':
@@ -36,8 +36,7 @@ def hello():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
         resposta = segmentation.faz_tudo(file.filename, model)
         os.remove('./files/'+ file.filename)
-    resposta = jsonify(resposta)
-    resposta.headers.add('Access-Control-Allow-Origin', '*')
+
     return jsonify(resposta)
 
 
