@@ -26,9 +26,11 @@ model = torch.hub.load('../yolovS', 'custom', path='./best.pt', source='local')
 
 print('UUUUUUUUAAAAAAAAAAAAAAAAHHHHHHHHHHH')
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['POST', 'OPTIONS'])
 @cross_origin(origin='*',headers=['Content-Type'])
 def hello():
+    if request.method == 'OPTIONS':
+        return 200
     if 'file' in request.files:
         file = request.files['file']
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
