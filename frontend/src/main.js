@@ -67,48 +67,48 @@ function uploadFile() {
 	console.log(formData);
 
 	for (var pair of formData.entries()) {
-		console.log(pair[0]+ ', ' + pair[1]); 
+		console.log(pair[0]+ ', ' + pair[1]);
 	}
-	
-	fetch('https://secure-dawn-93408.herokuapp.com/', {
-		method: "POST", 
+
+	fetch('http://localhost:5000', {
+		method: "POST",
 		body: formData
 	  }).then(async (res) => {
 		showResults(await res.json());
 	  }).catch((err) => {
 		console.log(err);
-	}) 
+	})
 
 	// fetch('http://localhost:5000', {
-	// 	method: "POST", 
+	// 	method: "POST",
 	// 	body: formData
 	//   }).then(async (res) => {
 	// 	showResults(await res.json());
 	//   }).catch((err) => {
 	// 	console.log(err);
-	// }) 
+	// })
 
 	toggleModal();
 }
 
 function toggleModal() {
 	toggleModal.visible = !toggleModal.visible;
-	
+
 	if(!toggleModal.modal) {
 		toggleModal.modal = $(".modal");
 		toggleModal.backdrop = $(".backdrop");
 		modalBody = $(".modal-body")
-		
+
 		toggleModal.modal.css('transition', '0.5s');
 		toggleModal.backdrop.css('transition', '0.5s');
 	}
-	
+
 	if(toggleModal.visible) {
 		modalBody.html(HTMLSnippets.defaultModal)
 		toggleModal.modal.css({'opacity': '1', 'pointer-events': 'auto'});
 		toggleModal.backdrop.css({'opacity': '0.2', 'pointer-events': 'auto'});
 	}
-	
+
 	else {
 		toggleModal.modal.css({'opacity': '0', 'pointer-events': 'none'});
 		toggleModal.backdrop.css({'opacity': '0', 'pointer-events': 'none'});

@@ -29,13 +29,14 @@ print('UUUUUUUUAAAAAAAAAAAAAAAAHHHHHHHHHHH')
 @app.route('/', methods=['POST'])
 @cross_origin(origin='*',headers=['Content-Type'])
 def hello():
-    print(request.files)
+    if request.method == 'OPTIONS':
+        return 200
     if 'file' in request.files:
         file = request.files['file']
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
         resposta = segmentation.faz_tudo(file.filename, model)
         os.remove('./files/'+ file.filename)
-    print(jsonify(resposta))
+
     return jsonify(resposta)
 
 
