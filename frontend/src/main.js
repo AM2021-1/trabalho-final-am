@@ -72,7 +72,10 @@ function uploadFile() {
 	
 	fetch('https://secure-dawn-93408.herokuapp.com/', {
 		method: "POST", 
-		body: formData
+		body: formData,
+		headers: {
+			'Access-Control-Allow-Origin': '*'
+		},
 	  }).then(async (res) => {
 		showResults(await res.json());
 	  }).catch((err) => {
