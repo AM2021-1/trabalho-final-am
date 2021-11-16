@@ -21,20 +21,21 @@ if not os.path.exists(UPLOAD_FOLDER):
 elif not os.path.exists(f'{UPLOAD_FOLDER}/images'):
     os.mkdir(f'{UPLOAD_FOLDER}/images')
 
-# model = torch.hub.load('/home/tiveron/faculdade/AM/a/trabalho-final-am/backend/yolov5', 'custom', path='./best.pt', source='local')
-model = ""
+model = torch.hub.load('../yolovS', 'custom', path='./best.pt', source='local')
+# model = ""
 
 print('UUUUUUUUAAAAAAAAAAAAAAAAHHHHHHHHHHH')
 
 @app.route('/', methods=['POST'])
 @cross_origin(origin='*',headers=['Content-Type'])
 def hello():
+    print(request.files)
     if 'file' in request.files:
         file = request.files['file']
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
         resposta = segmentation.faz_tudo(file.filename, model)
         os.remove('./files/'+ file.filename)
-
+    print(jsonify(resposta))
     return jsonify(resposta)
 
 
